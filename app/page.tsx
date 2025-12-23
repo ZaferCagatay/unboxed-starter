@@ -118,33 +118,6 @@ const StepItem = ({ number, title, desc }: any) => (
 
 export default function Home() {
   const [isHovering, setIsHovering] = useState(false);
-  // Util
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setLoading(true);
-
-    const form = e.currentTarget;
-
-    try {
-      await emailjs.sendForm(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-        form,
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
-      );
-
-      setSuccess(true);
-      form.reset();
-    } catch (error) {
-      console.error('EmailJS Error:', error);
-      alert('Bir hata oluştu. Lütfen tekrar deneyin.');
-    } finally {
-      setLoading(false);
-    }
-  };
 
   return (
     <main className="bg-slate-950 text-slate-200 min-h-screen selection:bg-blue-500/30 overflow-x-hidden">
@@ -244,7 +217,7 @@ export default function Home() {
               { label: 'Doğrulanmış Ürün', val: '100%' },
               { label: 'Güvenli Ödeme', val: '7/24' },
               { label: 'Kargo Desteği', val: 'Tam' },
-              { label: 'Komisyon', val: "%0'dan" },
+              { label: 'Komisyon', val: "%3'den başlayan" },
             ].map((stat, i) => (
               <div key={i} className="flex flex-col items-center">
                 <div className="text-2xl md:text-3xl font-bold text-white mb-1">
