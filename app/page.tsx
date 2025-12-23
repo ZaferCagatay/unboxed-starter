@@ -17,6 +17,7 @@ import emailjs from '@emailjs/browser';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import ApplySection from '@/components/Form';
+import Image from 'next/image';
 
 // --- Utility for cleaner tailwind classes ---
 function cn(...inputs: ClassValue[]) {
@@ -45,13 +46,25 @@ const Navbar = () => (
       {/* Logo Area */}
       <div
         onClick={(e) => scrollToSection(e, 'hero')}
-        className="flex items-center gap-2 group cursor-pointer"
+        className="flex items-center gap-3 group cursor-pointer"
       >
-        <div className="bg-blue-600/20 p-1.5 rounded-lg text-blue-500 group-hover:text-blue-400 group-hover:bg-blue-600/30 transition-colors">
-          <Box size={20} strokeWidth={2.5} />
-        </div>
-        <span className="text-xl font-bold tracking-tight text-white">
-          Unboxed
+        {/* LOGO: Removed the wrapper div completely. 
+    By applying the hover effect directly to the image, it looks much cleaner.
+  */}
+        <Image
+          src="/unboxed-logo.png"
+          alt="UnBoxed Logo"
+          width={415}
+          height={378}
+          className="w-9 h-auto transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_0_8px_rgba(59,130,246,0.5)]"
+          priority
+        />
+
+        {/* TEXT: Increased weight and tightened letter spacing.
+    "tracking-tighter" gives it that professional logo feel.
+  */}
+        <span className="text-2xl font-black tracking-tighter text-white transition-colors duration-300 group-hover:text-blue-400">
+          UnBoxed
         </span>
       </div>
 
@@ -351,7 +364,7 @@ export default function Home() {
 
         {/* FOOTER */}
         <footer className="border-t border-white/5 py-12 text-center text-slate-600 text-sm">
-          <p>&copy; 2024 UnBoxed Inc. İstanbul.</p>
+          <p>&copy; 2025 UnBoxed Inc. İstanbul.</p>
         </footer>
       </div>
     </main>
