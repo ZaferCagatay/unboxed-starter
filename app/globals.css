@@ -3,6 +3,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-sans: var(--font-jakarta);
+  --font-mono: var(--font-mono);
 }
 
 @theme inline {
@@ -17,6 +19,18 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+}
+
+html {
+  font-family: var(--font-jakarta), ui-sans-serif, system-ui;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: -0.04em !important;
 }
 
 body {

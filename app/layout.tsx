@@ -1,21 +1,23 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { Toaster } from 'react-hot-toast';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
+  variable: '--font-jakarta', // This matches the variable in globals.css
+  display: 'swap',
 });
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+const mono = JetBrains_Mono({
   subsets: ['latin'],
+  variable: '--font-mono',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
-  title: 'UnBoxed - Influencer lar için satım platformu',
-  description: 'Influencer lar için, 2. el ürün satım platformu',
+  title: 'UnBoxed - Influencerlar için Satış Platformu',
+  description: 'İncelediğin ürünleri güvenle nakite çevir.',
 };
 
 export default function RootLayout({
@@ -24,19 +26,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="tr" className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${jakarta.variable} ${mono.variable} font-sans antialiased bg-slate-950 text-slate-200`}
       >
         {children}
         <Toaster
-          position="top-center"
+          position="bottom-right"
           toastOptions={{
             duration: 4000,
             style: {
               background: '#0B0F14',
               color: '#fff',
-              border: '1px solid #1f2937',
+              border: '1px solid rgba(255,255,255,0.1)',
+              borderRadius: '16px',
             },
           }}
         />
